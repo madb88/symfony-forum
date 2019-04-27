@@ -4,13 +4,17 @@
 
 {% block body %}
 <style>
-
+.error {color: red}
 </style>
 
 <div>
-    <h1>
-        Login page
-    </h1>
+    <a href="{{path('logout')}}">Logout</a>
+    <h1>Login page</h1>
+
+    {% if error %}
+        <span class="error">{{ error.messageKey }}</span>
+    {% endif %}
+    
 
     <form action="{{ path('login')}}" method="POST">
         <input type="text" name="_username" value={{ last_username }}>

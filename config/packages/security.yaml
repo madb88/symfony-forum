@@ -1,5 +1,7 @@
-# config/packages/security.yaml
 security:
+    encoders:
+      App\Entity\User:
+        algorithm: bcrypt
     providers:
         auth_provider:
           entity:
@@ -16,3 +18,11 @@ security:
               login_path: login
               check_path: login
               provider: auth_provider
+
+            logout:
+              path: /logout
+              target: /
+
+    access_control:
+      - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/, roles: ROLE_USER}
