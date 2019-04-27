@@ -1,0 +1,18 @@
+# config/packages/security.yaml
+security:
+    providers:
+        auth_provider:
+          entity:
+            class: App\Entity\User
+            property: username
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+
+            form_login:
+              login_path: login
+              check_path: login
+              provider: auth_provider
