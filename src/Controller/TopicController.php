@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Topic;
+use App\Entity\Category;
 use App\Form\TopicType;
 use App\Repository\TopicRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,12 +35,22 @@ class TopicController extends AbstractController
         $form = $this->createForm(TopicType::class, $topic);
         $form->handleRequest($request);
 
+        $category = $this->getDoctrine()
+        ->getRepository(Category::class)
+        ->find($request->get('category_id'));
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $topic->setCategory($category);
+        $topic->setUser($user);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($topic);
             $entityManager->flush();
 
-            return $this->redirectToRoute('topic_index');
+            return $this->redirectToRoute('category_section', ['id' => $category->getId()]);
+
         }
 
         return $this->render('topic/new.html.twig', [
