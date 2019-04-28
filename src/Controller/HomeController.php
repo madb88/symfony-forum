@@ -12,7 +12,7 @@ use App\Entity\Topic;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="")
+     * @Route("/", name="home")
      */
     public function index(CategoryRepository $categoryRepository)
     {
