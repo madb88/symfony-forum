@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Forum</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Categories</th>
+                <th>Description</th>
+                <th>Topics</th>
+                <th>Posts</th>
+                <th>Last Post</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td><a href="{{ path('category_section', {'id': category.id}) }}">{{category.name}}</a></td>
+                <td>{{ category.description }}</td>
+                <td>{{ 12 }}</td>
+                <td>{{ 13 }}</td>
+                <td>{{ '2012-12-12' }}
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
