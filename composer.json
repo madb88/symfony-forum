@@ -24,7 +24,8 @@
         "symfony/validator": "4.2.*",
         "symfony/var-dumper": "4.2.*",
         "symfony/web-server-bundle": "4.2.*",
-        "symfony/yaml": "4.2.*"
+        "symfony/yaml": "4.2.*",
+        "ornicar/gravatar-bundle" : "~1.0"
     },
     "config": {
         "preferred-install": {
