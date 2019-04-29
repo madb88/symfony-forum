@@ -52,7 +52,8 @@ class SearchController extends AbstractController
         ->findByQuery($value);
 
         return $this->render('search/index.html.twig', [
-            'posts'=>$posts
+            'posts'=>$posts,
+            'search_value'=>$value
         ]);
     }
 }

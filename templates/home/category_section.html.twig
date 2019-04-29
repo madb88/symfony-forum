@@ -15,7 +15,6 @@
                 <th>Topics</th>
                 <th>Author</th>
                 <th>Posts</th>
-                <th>Last Post</th>
             </tr>
             
         </thead>
@@ -26,7 +25,6 @@
               <td><a href="{{ path('topic_section', {'id': topic.id}) }}">{{topic.title}}</a></td>
               <td>{{topic.user.username}}</td>
               <td>{{topic.countedPosts}}</td>  
-              <td>2012-12-12 12:12:12</td> 
             </tr>
         {% else %}
             <tr>

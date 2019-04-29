@@ -19,13 +19,21 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{topic.user.username}}</td>
+                <td>
+                {{topic.user.username}}
+                <img src="{{ gravatar(topic.user.email) }}" />
+
+                </td>
                 <td>{{topic.message}}</td>  
             </tr>
             <td colspan="2">Responses</td>
             {% for post in posts %}
             <tr>
-              <td>{{post.user.username}}</td>
+              <td>
+                {{post.user.username}}
+                <img src="{{ gravatar(post.user.email) }}" />
+              </td>
+              
               <td>{{post.message}}</td>
             </tr>
         {% else %}
