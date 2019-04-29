@@ -29,11 +29,6 @@ class Topic
     private $message;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $views_number;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="topics")
     */
     private $category;
@@ -78,18 +73,6 @@ class Topic
     public function setMessage(string $message): self
     {
         $this->message = $message;
-
-        return $this;
-    }
-
-    public function getViewsNumber(): ?int
-    {
-        return $this->views_number;
-    }
-
-    public function setViewsNumber(?int $views_number): self
-    {
-        $this->views_number = $views_number;
 
         return $this;
     }

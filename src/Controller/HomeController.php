@@ -16,35 +16,23 @@ class HomeController extends AbstractController
      */
     public function index(CategoryRepository $categoryRepository)
     {
+
+        $categories =  $categoryRepository->findAll();
+        $this->countCategoryTopics($categories);
+
         return $this->render('home/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
+            'categories' => $categories,
         ]);
     }
 
-    /**
-     * @Route("/category_section/{id}", name="category_section", methods={"GET"})
-     */
-    public function showCategorySection(Category $category){
-        
-        $topics = $category->getTopics();
-        
-        return $this->render('home/category_section.html.twig', [
-            'category' => $category,
-            'topics' => $topics
-        ]);
+    private function countCategoryTopics($categories) : void
+    {
+        foreach($categories as $category){
+            $category->countedTopics = count($category->getTopics());
+        }
+
     }
 
-
-    /**
-     * @Route("/topic_section/{id}", name="topic_section", methods={"GET"})
-     */
-    public function showTopicSection(Topic $topic){
-                
-        $posts = $topic->getPosts();
-
-        return $this->render('home/topic_section.html.twig', [
-            'topic' => $topic,
-            'posts' => $posts
-        ]);
-    }
+  
+    
 }

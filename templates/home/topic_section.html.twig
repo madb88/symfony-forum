@@ -35,7 +35,8 @@
         {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('post_new', {'topic_id': topic.id}) }}">Response</a>
+    <button class="btn btn-primary" onclick="history.go(-1);">Back </button>
+    <a class="btn btn-primary" href="{{ path('post_new', {'topic_id': topic.id}) }} role='button'">Add Response</a>
 
 
 </div>

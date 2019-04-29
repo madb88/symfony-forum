@@ -104,4 +104,17 @@ class TopicController extends AbstractController
 
         return $this->redirectToRoute('topic_index');
     }
+
+     /**
+     * @Route("/topic_section/{id}", name="topic_section", methods={"GET"})
+     */
+    public function showTopicSection(Topic $topic){
+                
+        $posts = $topic->getPosts();
+
+        return $this->render('home/topic_section.html.twig', [
+            'topic' => $topic,
+            'posts' => $posts
+        ]);
+    }
 }

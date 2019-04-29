@@ -39,7 +39,7 @@ class CategoryController extends AbstractController
             $entityManager->persist($category);
             $entityManager->flush();
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('category/new.html.twig', [
@@ -92,5 +92,29 @@ class CategoryController extends AbstractController
         }
 
         return $this->redirectToRoute('category_index');
+    }
+
+    /**
+     * @Route("/category_section/{id}", name="category_section", methods={"GET"})
+     */
+    public function showCategorySection(Category $category){
+        
+        $topics = $category->getTopics();
+        
+        $this->countTopicsPosts($topics);
+
+        return $this->render('home/category_section.html.twig', [
+            'category' => $category,
+            'topics' => $topics
+        ]);
+    }
+    
+
+    private function countTopicsPosts($topics) : void
+    {
+        foreach($topics as $topic){
+            $topic->countedPosts = count($topic->getPosts());
+        }
+
     }
 }

@@ -13,9 +13,8 @@
         <thead>
             <tr>
                 <th>Topics</th>
-                <th>Responses</th>
                 <th>Author</th>
-                <th>Displays</th>
+                <th>Posts</th>
                 <th>Last Post</th>
             </tr>
             
@@ -25,9 +24,8 @@
     
             <tr>
               <td><a href="{{ path('topic_section', {'id': topic.id}) }}">{{topic.title}}</a></td>
-              <td>12</td>
               <td>{{topic.user.username}}</td>
-              <td>{{topic.viewsNumber}}</td>  
+              <td>{{topic.countedPosts}}</td>  
               <td>2012-12-12 12:12:12</td> 
             </tr>
         {% else %}

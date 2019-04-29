@@ -17,7 +17,6 @@
                 <th>Categories</th>
                 <th>Description</th>
                 <th>Topics</th>
-                <th>Posts</th>
                 <th>Last Post</th>
             </tr>
         </thead>
@@ -26,8 +25,7 @@
             <tr>
                 <td><a href="{{ path('category_section', {'id': category.id}) }}">{{category.name}}</a></td>
                 <td>{{ category.description }}</td>
-                <td>{{ 12 }}</td>
-                <td>{{ 13 }}</td>
+                <td>{{ category.countedTopics }}</td>
                 <td>{{ '2012-12-12' }}
 
             </tr>
