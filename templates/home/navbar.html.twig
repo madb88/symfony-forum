@@ -8,16 +8,23 @@
       <li class="nav-item">
         <a class="nav-link" href="{{path('category_new')}}">Create category</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{path('logout')}}">Logout</a>
-      </li>
+      {% if is_granted('ROLE_USER') %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{path('logout')}}">Logout</a>
+          </li>
+      {% endif %}
+    
     </ul>
   </div>
     <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
         <ul class="navbar-nav text-right">
+              {% if is_granted('ROLE_USER') and app.user is not empty %}
+
             <span class="navbar-text tet-align-left">
               Username: <a href="{{ path('user_show', {'id': app.user.id}) }}">{{ app.user.username }}</a>
             </span>
+                  {% endif %}
+
         </ul>
     </div>
 </nav>
