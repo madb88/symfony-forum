@@ -19,14 +19,14 @@
         </thead>
         <tbody>
             <tr>
-                <td>
+                <td class="table-info">
                 {{topic.user.username}}
                 <img src="{{ gravatar(topic.user.email) }}" />
 
                 </td>
-                <td>{{topic.message}}</td>  
+                <td class="table-info">{{topic.message}}</td>  
             </tr>
-            <td colspan="2">Responses</td>
+            <hr />
             {% for post in posts %}
             <tr>
               <td>
@@ -38,7 +38,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="2">No responses</td>
+                <td colspan="2" class="table-danger">No responses</td>
             </tr>
         {% endfor %}
         </tbody>

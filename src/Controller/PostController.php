@@ -16,16 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PostController extends AbstractController
 {
-    /**
-     * @Route("/", name="post_index", methods={"GET"})
-     */
-    public function index(PostRepository $postRepository): Response
-    {
-        return $this->render('post/index.html.twig', [
-            'posts' => $postRepository->findAll(),
-        ]);
-    }
-
+    
     /**
      * @Route("/new", name="post_new", methods={"GET","POST"})
      */
@@ -88,19 +79,5 @@ class PostController extends AbstractController
             'post' => $post,
             'form' => $form->createView(),
         ]);
-    }
-
-    /**
-     * @Route("/{id}", name="post_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Post $post): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($post);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('post_index');
     }
 }
