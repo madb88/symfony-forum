@@ -48,6 +48,7 @@ class TopicControllerTest extends WebTestCase
         $topic->setTitle('xxxx');
         $topic->setMessage('xxxx');
         $topic->setUser($user);
+        $topic->setIsImportant(true);
 
         $this->em->persist($topic);
         $this->em->flush();

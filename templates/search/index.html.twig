@@ -5,13 +5,12 @@
 <div class="example-wrapper">
     <h1>Results for {{ search_value }}
 </h1>
-   
-
-     <table class="table">
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Message</th>
+                <th>Show Topic</th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +18,7 @@
             <tr>
                 <td>{{ post.id }}</td>
                 <td>{{ post.message }}</td>
-
+                <td><a href="{{ path('topic_section', {'id': post.topic.id}) }}">Show Topic</a></td>
             </tr>
         {% else %}
             <tr>
@@ -28,6 +27,5 @@
         {% endfor %}
         </tbody>
     </table>
-   
 </div>
 {% endblock %}

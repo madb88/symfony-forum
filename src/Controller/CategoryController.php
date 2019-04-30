@@ -100,7 +100,7 @@ class CategoryController extends AbstractController
     public function showCategorySection(Category $category){
         
         $topics = $category->getTopics();
-        
+       
         $this->countTopicsPosts($topics);
 
         return $this->render('home/category_section.html.twig', [

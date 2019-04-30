@@ -1,0 +1,27 @@
+<div class="card">
+        <div class="card-body">
+
+        <h4 class="card-title">Last Posts</h4>
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Author</th>
+                <th>Message</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in newestPosts %}
+                <tr>
+                    <td>{{post.user.username}}</td>
+                    <td>{{post.message}}</a></td>
+                    <td><a href="{{ path('topic_section', {'id': post.topic.id}) }}">Show Topic</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>

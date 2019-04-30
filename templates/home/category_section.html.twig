@@ -21,7 +21,7 @@
         <tbody>
        {% for topic in topics %}
     
-            <tr>
+            <tr class={{ topic.isImportant ? 'table-warning' : '' }}>
               <td><a href="{{ path('topic_section', {'id': topic.id}) }}">{{topic.title}}</a></td>
               <td>{{topic.user.username}}</td>
               <td>{{topic.countedPosts}}</td>  

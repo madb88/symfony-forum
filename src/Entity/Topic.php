@@ -46,6 +46,11 @@ class Topic
      */
     private $posts;
 
+    /**
+     * @ORM\Column(type="boolean", name="is_important", nullable=true)
+     */
+    private $isImportant;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -100,6 +105,19 @@ class Topic
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getIsImportant()
+    {
+        return $this->isImportant;
+
+    }
+
+    public function setIsImportant($isImportant): self
+    {
+        $this->isImportant = $isImportant;
 
         return $this;
     }

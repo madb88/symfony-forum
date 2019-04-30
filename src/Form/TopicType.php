@@ -6,7 +6,7 @@ use App\Entity\Topic;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 
 class TopicType extends AbstractType
@@ -17,8 +17,12 @@ class TopicType extends AbstractType
         $builder
             ->add('title')
             ->add('message')
-            ->add('views_number')
-        ;
+            ->add('isImportant', ChoiceType::class, [
+                'choices'  => [
+                    'Yes' => true,
+                    'No' => false,
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

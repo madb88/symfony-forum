@@ -32,9 +32,6 @@ class TopicController extends AbstractController
     public function new(Request $request): Response
     {
         $topic = new Topic();
-        $form = $this->createForm(TopicType::class, $topic);
-        $form->handleRequest($request);
-
         $category = $this->getDoctrine()
         ->getRepository(Category::class)
         ->find($request->get('category_id'));
@@ -43,6 +40,11 @@ class TopicController extends AbstractController
 
         $topic->setCategory($category);
         $topic->setUser($user);
+        
+        $form = $this->createForm(TopicType::class, $topic);
+        $form->handleRequest($request);
+
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
