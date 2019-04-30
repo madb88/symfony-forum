@@ -32,8 +32,13 @@ class PostController extends AbstractController
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $post->setTopic($topic);
-        $post->setUser($user);
+        if(!empty($topic)){
+            $post->setTopic($topic);
+        }
+
+        if(!empty($user)){
+            $post->setUser($user);
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();

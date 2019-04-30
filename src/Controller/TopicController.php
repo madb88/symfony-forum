@@ -38,8 +38,13 @@ class TopicController extends AbstractController
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $topic->setCategory($category);
-        $topic->setUser($user);
+        if(!empty($category)){
+            $topic->setCategory($category);
+        }
+        
+        if(!empty($user)){
+            $topic->setUser($user);
+        }
         
         $form = $this->createForm(TopicType::class, $topic);
         $form->handleRequest($request);
